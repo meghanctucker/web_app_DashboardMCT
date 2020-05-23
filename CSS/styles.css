@@ -1,0 +1,27 @@
+.head {
+  background-color: #7477BF;
+}
+.navigation {
+  background-color: #4D4C72;
+}
+
+svg {
+  max-width: 10%;
+  padding: 2%;
+  margin: 2%;
+}
+
+input {
+  border-width: 2px;
+  border-color: black;
+  padding: 2%;
+  margin: 2%;
+}
+
+.search {
+  background-color: #FBFBFB;
+}
+
+canvas {
+  background-color: yellow;
+}
