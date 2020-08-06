@@ -22,6 +22,10 @@ input {
   background-color: #FBFBFB;
 }
 
+.dash {
+  background-color: #fff;
+}
+
 /* canvas {
   background-color: yellow;
 }

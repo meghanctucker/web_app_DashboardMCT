@@ -22,24 +22,27 @@
       <div class="head">
         <h1>YourApp</h1>
         <!-- bell icon -->
-        <?xml version="1.0" encoding="utf-8"?>
-        <!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        <div class="bell">
+          <?xml version="1.0" encoding="utf-8"?>
+          <!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
         	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
-        <style type="text/css">
-        	.st0{fill:#013b67;}
-        </style>
-        <g id="_x36__6_">
-        	<g>
-        		<path class="st0" d="M24,18v-8c0-5.5-4.5-10-10-10S4,4.5,4,10v8l-4,8h9.1c0.5,2.3,2.5,4,4.9,4s4.4-1.7,4.9-4H28L24,18z M14,28
-        			c-1.3,0-2.4-0.8-2.8-2h5.6C16.4,27.2,15.3,28,14,28z M3,24l3-6v-8c0-4.4,3.6-8,8-8s8,3.6,8,8v8l3,6H3z"/>
-        	</g>
-        </g>
-        </svg>
-        <div class="avatar">
-          <img src="images/member-1.jpg"/>
-          <p>member name </p>
-        </div>
+           <style type="text/css">
+        	  .st0{fill:#013b67;}
+            </style>
+            <g id="_x36__6_">
+        	     <g>
+        		       <path class="st0" d="M24,18v-8c0-5.5-4.5-10-10-10S4,4.5,4,10v8l-4,8h9.1c0.5,2.3,2.5,4,4.9,4s4.4-1.7,4.9-4H28L24,18z M14,28
+        			        c-1.3,0-2.4-0.8-2.8-2h5.6C16.4,27.2,15.3,28,14,28z M3,24l3-6v-8c0-4.4,3.6-8,8-8s8,3.6,8,8v8l3,6H3z"/>
+        	     </g>
+             </g>
+           </svg>
+           <div class="notification">
+           </div>
+          <div class="avatar">
+            <img src="images/member-1.jpg"/>
+            <p>member name </p>
+          </div>
       </div>
 
       <div class="navigation">
@@ -136,19 +139,52 @@
         </a>
       </div>
 
-      <div class="search">
-        <form>
-          <input type="text">
-        </form>
-      </div>
+
       <div class="dash">
-        <h1> Dashboard </h1>
-        <canvas id="traffic" height="200" width="400"></canvas>
-        <canvas id="dailyTraffic" height="200" width="200"></canvas>
-        <canvas id="mobileUsers" height="200" width="200"></canvas>
+        <!-- FIRST ROW Dash is 1/3 search is 2/3 -->
+        <div class="main-header">
+          <h1> Dashboard </h1>
+          <div class="search">
+            <form>
+              <input type="search" placeholder="Search...">
+            </form>
+          </div>
+        </div>
+        <!-- alert banner -->
+        <div class="alert" id="alert">
+          <!-- JS will go in here -->
+        </div>
+        <!-- Second ROW takes up full space-->
+        <section class="traffic">
+          <h3>Traffic</h3>
+          <ul class="traffic-nav">
+            <li class="traffic-nav-link">Hourly</li>
+            <li class="traffic-nav-link">Daily</li>
+            <li class="traffic-nav-link active">Weekly</li>
+            <li class="traffic-nav-link">Monthly</li>
+          </ul>
+          <div class="widget-container-full">
+            <canvas id="traffic" height="200" width="400"></canvas>
+          </div>
+        </section>
+        <!--Third Row each canvas takes up half -->
+        <section class="daily">
+          <h3>Daily Traffic</h3>
+          <div class="widget-container-half">
+            <canvas id="dailyTraffic" height="200" width="200"></canvas>
+          </div>
+        </section>
+        <section class="mobile-users">
+          <h3>Mobile Users</h3>
+          <div class="widget-container-half">
+            <canvas id="mobileUsers" height="200" width="200"></canvas>
+          </div>
+        <!-- FOURTH ROW Social stats has three in-line items -->
         <h2> SOCIAL STATS </h2>
+        <!-- FIFTH ROW each section takes up half -->
         <h2> NEW MEMBERS </h2>
         <h2> RECENT ACTIVITY </h2>
+        <!-- SIXTH ROW each section takes up half -->
         <h2> MESSAGE USER </h2>
           <form>
             <input type="text">
