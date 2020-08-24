@@ -18,8 +18,9 @@
     <link href="CSS/styles.css" rel="stylesheet">
   </head>
   <body>
-
-      <div class="head">
+    <div class="grid-container">
+<!-- HEADER -->
+      <div class="header">
         <h1>YourApp</h1>
         <!-- bell icon -->
         <div class="bell">
@@ -39,12 +40,13 @@
            </svg>
            <div class="notification">
            </div>
+         </div>
           <div class="avatar">
-            <img src="images/member-1.jpg"/>
+            <img src="images/member-1.jpg" class="profile-image"/>
             <p>member name </p>
-          </div>
-      </div>
-
+        </div>
+    </div>
+<!-- NAVIGATION -->
       <div class="navigation">
         <a class="dash">
           <!-- dashboard icon -->
@@ -139,9 +141,9 @@
         </a>
       </div>
 
-
-      <div class="dash">
-        <!-- FIRST ROW Dash is 1/3 search is 2/3 -->
+<!-- DASHBOARD -->
+      <div class="dashboard">
+  <!-- FIRST ROW Dash is 1/3 search is 2/3 -->
         <div class="main-header">
           <h1> Dashboard </h1>
           <div class="search">
@@ -154,7 +156,7 @@
         <div class="alert" id="alert">
           <!-- JS will go in here -->
         </div>
-        <!-- Second ROW takes up full space-->
+  <!-- Second ROW takes up full space-->
         <section class="traffic">
           <h3>Traffic</h3>
           <ul class="traffic-nav">
@@ -167,7 +169,7 @@
             <canvas id="traffic" height="200" width="400"></canvas>
           </div>
         </section>
-        <!--Third Row each canvas takes up half -->
+    <!--Third Row each canvas takes up half -->
         <section class="daily">
           <h3>Daily Traffic</h3>
           <div class="widget-container-half">
@@ -179,38 +181,152 @@
           <div class="widget-container-half">
             <canvas id="mobileUsers" height="200" width="200"></canvas>
           </div>
-        <!-- FOURTH ROW Social stats has three in-line items -->
-        <h2> SOCIAL STATS </h2>
-        <!-- FIFTH ROW each section takes up half -->
-        <h2> NEW MEMBERS </h2>
-        <h2> RECENT ACTIVITY </h2>
-        <!-- SIXTH ROW each section takes up half -->
-        <h2> MESSAGE USER </h2>
-          <form>
-            <input type="text">
-            <input type="text">
-            <button> SEND </button>
-          </form>
-        <h2> SETTINGS </h2>
-          <form>
-            <label> Send Email Notifications
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
-            <label> Set Profile to Public
-              <input type="checkbox">
-              <span class="slider round"></span>
-            </label>
-            <select id="timezone" name="timezone">
-              <option value="Eastern">Eastern</option>
-              <option value="Central">Central</option>
-              <option value="Mountain">Mountain</option>
-            </select>
-            <button> SAVE </button>
-            <button> CANCEL </button>
-          </form>
+        </section>
+  <!-- FOURTH ROW Social stats has three in-line items -->
+        <div class="social-section">
+          <h3> SOCIAL STATS </h3>
+          <div class="social-boxes">
+          <div class="social-container">
+            <div class="social-image">
+              <!--inline svg goes here -->
+            </div>
+            <div class="social-text">
+              <p>Twitter</p>
+              <p>10,345</p>
+            </div>
+          </div>
+          <div class="social-container">
+            <div class="social-image">
+              <!--inline svg goes here -->
+            </div>
+            <div class="social-text">
+              <p>Facebook</p>
+              <p>8,739</p>
+            </div>
+          </div>
+          <div class="social-container">
+            <div class="social-image">
+              <!--inline svg goes here -->
+            </div>
+            <div class="social-text">
+              <p>Google+</p>
+              <p>2,530</p>
+            </div>
+          </div>
+        </div>
+        </div>
+  <!-- FIFTH ROW each section takes up half -->
+    <section class="members">
+        <h3> NEW MEMBERS </h3>
 
-      </div>
+        <div class="members-container">
+          <img src="images/member-1.jpg" class="profile-image">
+          <div class="members-text">
+            <p>Victoria Chambers</p>
+            <a href="#">victoria.chambers80@example.com</a>
+          </div>
+          <p>10/15/15</p>
+        </div>
+
+        <div class="members-container">
+          <img src="images/member-2.jpg" class="profile-image">
+          <div class="members-text">
+            <p>Dale Byrd</p>
+            <a href="#">dale.byrd52@example.com</a>
+          </div>
+          <p>10/15/15</p>
+        </div>
+
+        <div class="members-container">
+          <img src="images/member-3.jpg" class="profile-image">
+          <div class="members-text">
+            <p>Dawn Wood</p>
+            <a href="#">dawn.wood16@example.com</a>
+          </div>
+          <p>10/15/15</p>
+        </div>
+
+        <div class="members-container">
+          <img src="images/member-4.jpg" class="profile-image">
+          <div class="members-text">
+            <p>Dan Oliver</p>
+            <a href="#">dan.oliver82@example.com</a>
+          </div>
+          <p>10/15/15</p>
+        </div>
+    </section>
+
+    <section class="recent">
+            <h3> RECENT ACTIVITY </h3>
+
+            <div class="members-container">
+              <img src="images/member-1.jpg" class="profile-image">
+              <div class="members-text">
+                <p>Victoria Chambers commented on YourApp's SEO Tips</p>
+                <p>4 hours ago</p>
+              </div>
+              <p> > </p>
+            </div>
+
+            <div class="members-container">
+              <img src="images/member-2.jpg" class="profile-image">
+              <div class="members-text">
+                <p>Dale Byrd liked the post Facebook's Changes for 2016</p>
+                <p>5 hours ago</p>
+              </div>
+              <p> > </p>
+            </div>
+
+            <div class="members-container">
+              <img src="images/member-3.jpg" class="profile-image">
+              <div class="members-text">
+                <p>Dawn Wood commented on Facebook's Changes for 2016</p>
+                <p>5 hours ago</p>
+              </div>
+              <p> > </p>
+            </div>
+
+            <div class="members-container">
+              <img src="images/member-4.jpg" class="profile-image">
+              <div class="members-text">
+                <p>Dan Oliver posted YourApp's SEO Tips</p>
+                <p>1 day ago</p>
+              </div>
+              <p> > </p>
+            </div>
+    </section>
+
+    <!-- SIXTH ROW each section takes up half -->
+    <section class="message">
+          <h3> MESSAGE USER </h3>
+
+            <form class="widget-container">
+              <input type="text" placeholder"Search for user" class="form-field" id="userField">
+              <textarea placeholder="message for user" class="form-area" id="messageField"></textarea>
+              <button class="button-primary" id="send"> SEND </button>
+            </form>
+      </section>
+
+
+    <section class="settings">
+        <h3> SETTINGS </h3>
+
+        <!-- custom CSS toggle code -->
+        <!-- custom CSS toggle code -->
+        <select class="form-field" id="timezone">
+          <option disabled selected> Select a Timezone</option>
+          <option>Eastern</option>
+          <option>Central</option>
+          <option>Mountain</option>
+          <option>Pacific</option>
+        </select>
+        <div class="settings-button">
+          <button class="button-primary" id="save">Save</button>
+          <button class="button-disabled" id="cancel">Cancel</button>
+        </div>
+      </section>
+    </div>
+  </div>
   <script type="text/javascript" src="JS/app.js"></script>
   </body>
 </html>
