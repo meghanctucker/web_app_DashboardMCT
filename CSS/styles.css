@@ -13,9 +13,20 @@
   background-color: #7477BF;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
+  color: white;
 }
 
+.header h1 {
+    font-weight: lighter;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 1.5%;
+}
 
 .navigation {
   grid-area: navigation;
@@ -36,16 +47,39 @@
 }
 
 .bell {
-  min-width: 100px;
+  min-width: 50px;
+  margin-right: -10px;
+}
+
+.notify{
+  display: flex;
+  flex-direction: row;
+}
+
+.notification {
+  background: #81C98F;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  padding-left: 0px;
+  margin-right: 5px;
 }
 
 .avatar {
   display: flex;
   flex-direction: row;
   border-left-color: black;
-  border-left-width: 2px;
+  border-left-width: 1px;
   border-left-style: solid;
   padding-left: 10px;
+}
+
+.avatar img {
+  min-width: 50px;
+  min-height: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 10px;
 }
 
 .profile-image {
@@ -113,6 +147,34 @@ input {
   background-color: #fbfbfb;
   padding: 1% 10%;
 }
+
+.button-primary{
+  background-color:  #7477BF;
+}
+
+.widget-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+}
+
+.toggled {
+  background-color:  #7477BF;
+}
+
+#notify-bell:hover .notify-bell-icon {
+  transform: rotate(45deg);
+}
+
+/*
+.notify-bell-icon{
+  transition: transform 2s ease-out;
+}
+*/
 /* canvas {
   background-color: yellow;
 }
