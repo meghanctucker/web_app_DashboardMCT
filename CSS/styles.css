@@ -146,6 +146,9 @@ input {
   border: 1px solid grey;
   background-color: #fbfbfb;
   padding: 1% 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .button-primary{
@@ -170,11 +173,28 @@ input {
   transform: rotate(45deg);
 }
 
-/*
+.dash, .members, .visit, .setting {
+  margin: 1em auto;
+  width: 65%;
+}
+
+.social-image{
+  background-color: #7477BF;
+  border-radius: 50%;
+  margin: 1em auto;
+  min-width: 50px;
+  min-height: 50px;
+}
+
+.facebook, .twitter, .google {
+  fill: #FFF;
+}
+
 .notify-bell-icon{
   transition: transform 2s ease-out;
+  fill: #fff;
 }
-*/
+
 /* canvas {
   background-color: yellow;
 }
