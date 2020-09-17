@@ -48,6 +48,7 @@
 
 .bell {
   min-width: 50px;
+  max-width: 100px;
   margin-right: -10px;
 }
 
@@ -84,14 +85,15 @@
 
 .profile-image {
   border-radius: 50%;
-  max-width: 15%;
-  max-height: 15%;
+  max-width: 50px;
+  max-height: 50px;
 }
 
 svg {
   max-width: 85%;
   padding: 5%;
-  margin: 2%;
+  display: block;
+  margin: auto;
 }
 
 input {
@@ -142,19 +144,47 @@ input {
   background-color: white;
   border: 1px solid grey;
 }
+
 .social-container {
   border: 1px solid grey;
   background-color: #fbfbfb;
   padding: 1% 10%;
+  margin:1%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+/*  justify-content: space-between; */
 }
 
 .button-primary{
   background-color:  #7477BF;
+  border-radius: 5%;
+  padding: 2%;
+  margin: 2%;
+  color: #fff;
 }
 
+.button-disabled{
+  border-radius: 5%;
+  padding: 2%;
+  margin: 2%;
+}
+
+.switch-light {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5%;
+  margin-bottom: 5%;
+}
+
+.switch-light strong {
+  max-width: 30%;
+  min-width: 30%;
+}
+.switch-light span {
+  max-width: 20%;
+}
 .widget-container{
   display: flex;
   flex-direction: column;
@@ -167,33 +197,59 @@ input {
 
 .toggled {
   background-color:  #7477BF;
+  padding: 2%;
+  margin-left: 10%;
+}
+
+.switch-ios.switch-light input:checked ~ span {
+  border-color: #7477BF;
+  box-shadow: inset 0 0 0 30px #7477BF;
+}
+
+.switch-ios.switch-light input:checked ~ span a {
+  border-color: #7477BF;
 }
 
 #notify-bell:hover .notify-bell-icon {
   transform: rotate(45deg);
 }
 
-.dash, .members, .visit, .setting {
+.notify-bell-icon{
+  max-width: 75px;
+  transform-origin: 50% 50%;
+  transition: transform 1s ease-out;
+  fill: #fff;
+}
+
+.dash, .members, .visit, .setting, .recent {
   margin: 1em auto;
-  width: 65%;
 }
 
 .social-image{
   background-color: #7477BF;
   border-radius: 50%;
-  margin: 1em auto;
-  min-width: 50px;
-  min-height: 50px;
+  min-width: 45px;
+  min-height: 45px;
+  display: inline-block;
+  margin: auto;
+  float: left;
+}
+
+.social-text {
+  display: inline-block;
+  margin-left: 10%;
+  float:right;
 }
 
 .facebook, .twitter, .google {
   fill: #FFF;
+  min-width: 5%;
+  min-height: 5%;
+  margin: auto;
+  display: block;
 }
 
-.notify-bell-icon{
-  transition: transform 2s ease-out;
-  fill: #fff;
-}
+
 
 /* canvas {
   background-color: yellow;
@@ -223,12 +279,16 @@ input {
   .social-boxes {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin: 2.5%;
+    padding: 2.5%;
   }
   .members-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    margin-bottom: 2%;
+    border-bottom: solid 1px grey;
   }
   .alert {
     grid-column: 1/3;
