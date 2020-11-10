@@ -3,10 +3,22 @@ $.ajax({
   url: 'https://randomuser.me/api/?inc=picture,name',
   dataType: 'json',
   success: function(data) {
-    var result = data.results[0];
-    console.log(result.picture.thumbnail);
-    console.log(result.name.first);
-    console.log(result.name.last);
+    const result = data.results[0];
+//    console.log(result.picture.thumbnail);
+    const userPic = result.picture.thumbnail;
+    console.log(userPic);
+//    console.log(result.name.first);
+    const userName = result.name.first;
+    console.log(userName);
+//    console.log(result.name.last);
+    const userLast = result.name.last;
+    console.log(userLast);
+    console.log(userName + " " + userLast);
+//adding the picture to the src of avatar image
+  $('#avatar-image').attr('src', userPic);
+//adding the name to the p tag
+  const avatarName = document.getElementById("avatar-name");
+  avatarName.append(userName + " " + userLast);
  }
 });
 
