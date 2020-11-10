@@ -1,3 +1,15 @@
+//Random USER
+$.ajax({
+  url: 'https://randomuser.me/api/?inc=picture,name',
+  dataType: 'json',
+  success: function(data) {
+    var result = data.results[0];
+    console.log(result.picture.thumbnail);
+    console.log(result.name.first);
+    console.log(result.name.last);
+ }
+});
+
 //GRAPH OBJECTS
 const lineChart = document.getElementById('traffic');
 const barChart = document.getElementById('dailyTraffic');
