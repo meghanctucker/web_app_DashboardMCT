@@ -282,14 +282,45 @@ input {
   font-size: .55em;
 }
 
-#notify-bell:hover .notify-bell-icon {
-  transform: rotate(45deg);
+ .notify:hover .notify-bell-icon {
+   -webkit-animation-name: ring;
+   -webkit-animation-duration: .25s;
+   -webkit-animation-iteration-count: 3;
+   -webkit-animation-timing-funktion: ease-in-out;
+   -webkit-animation-delay: -.05s;
+   -webkit-animation-direction: alternate;
+   -webkit-transform-origin: 50%;
+
+   animation-name: ring;
+animation-duration: .25s;
+animation-iteration-count: 3;
+animation-timing-function: ease-in-out;
+animation-delay: -.05s;
+animation-direction: alternate;
+transform-origin: 50%;
+
+
+/*
+  transform: rotate(30deg);
+*/
 }
 
-.notify-bell-icon {
+@-webkit-keyframes ring {
+0% { -webkit-transform: rotate(15deg); }
+100% { -webkit-transform: rotate(-15deg); }
+}
+
+@keyframes ring {
+0% { transform: rotate(20deg); }
+100% { transform: rotate(-20deg); }
+}
+
+ .notify-bell-icon {
   max-width: 55px;
+  /*
   transform-origin: 50% 50%;
-  transition: transform 1s ease-out;
+  transition: transform 1.5s ease-out;
+  */
   fill: #fff;
 }
 
