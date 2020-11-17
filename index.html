@@ -94,13 +94,16 @@
         <section class="traffic">
           <h3>Traffic</h3>
           <ul class="traffic-nav">
-            <li class="traffic-nav-link">Hourly</li>
-            <li class="traffic-nav-link">Daily</li>
-            <li class="traffic-nav-link active">Weekly</li>
-            <li class="traffic-nav-link">Monthly</li>
+            <li href="#hourlyChart" class="traffic-nav-link">Hourly</li>
+            <li href="#dailyChart" class="traffic-nav-link">Daily</li>
+            <li href="#traffic" class="traffic-nav-link active">Weekly</li>
+            <li href="#monthlyChart" class="traffic-nav-link">Monthly</li>
           </ul>
           <div class="widget-container-full">
-            <canvas id="traffic" height="200" width="400"></canvas>
+            <canvas id="hourlyChart" height="200" width="400"></canvas>
+            <canvas id="dailyChart" height="200" width="400"></canvas>
+            <canvas id="traffic" class="active" height="200" width="400"></canvas>
+            <canvas id="monthlyChart" height="200" width="400"></canvas>
           </div>
         </section>
     <!--Third Row each canvas takes up half -->
@@ -188,7 +191,7 @@
         </div>
         </div>
   <!-- FIFTH ROW each section takes up half -->
-    <section class="members">
+    <section id="member-section" class="members">
         <h3> NEW MEMBERS </h3>
 
         <div class="members-container">
