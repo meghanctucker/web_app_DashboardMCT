@@ -23,18 +23,79 @@ $.ajax({
 });
 
 //GRAPH OBJECTS
-
-
-const active = document.getElementsByClassName('active');
-const id = active[1].getAttribute('id');
-console.log(id);
-
 const hourlyChart = document.getElementById('hourlyChart');
 const dailyChart = document.getElementById('dailyChart');
 const weeklyChart = document.getElementById('traffic');
 const monthlyChart = document.getElementById('monthlyChart');
 const barChart = document.getElementById('dailyTraffic');
 const donutChart = document.getElementById('mobileUsers');
+
+const chart_Array = [hourlyChart.getAttribute('id'),
+                    dailyChart.getAttribute('id'),
+                    weeklyChart.getAttribute('id'),
+                    monthlyChart.getAttribute('id')];
+
+
+//creates variable which grabs onto array of list items
+const clickItems = document.getElementsByClassName('traffic-nav-link');
+//iterates through list items
+for(let i=0; i<clickItems.length; i++) {
+  //creates variable for an index in the array
+  const clickItem = clickItems[i];
+  //when indexed array item is clicked
+  clickItem.addEventListener("click", function(){
+    //iterate through the original array again
+    for(let i=0; i<clickItems.length; i++) {
+      //remove all classes with the name "active"
+      clickItems[i].classList.remove("active");
+    }
+    //then add the class "active" to the list item that was clicked
+    clickItem.classList.add("active");
+    //then create a variable which gets the href attribute of the clicked list item
+    let href = clickItem.getAttribute('href');
+//---> DO I NEED THIS?    //create a function that returns the ID name that the href of the clicked item
+//    function getId(){
+    //then create an array of the letters in the href attribute
+    let splitHref = href.split("");
+    console.log(splitHref);
+    //a function to remove the # from the variable
+    function newId(id) {
+      //will return the array without the hashtag
+      return id!=="#";
+    }
+    //creates a variable to filter through the array without the hashtag
+      let newIdArray = splitHref.filter(newId);
+      console.log(newIdArray);
+      //finally creates a variable that joins the array into a string
+      let finalId = newIdArray.join('');
+    //  console.log(finalId);
+      //console.log(finalId);
+  //    function nameChart(currentChart){
+  //      for(let i=0; i<chart_Array.length; i++) {
+  //        let currentChart = chart_Array[i];
+  //        return currentChart;
+  //      }
+  //    }
+  //    var x = nameChart();
+  //    console.log(x);
+  console.log(finalId);
+  console.log(chart_Array);
+  for(let i=0; i<chart_Array.length; i++) {
+    let currentChart = chart_Array[i];
+    if (currentChart == finalId){
+      console.log(currentChart);
+      currentChart.style.display="block";
+    } else {
+      console.log('false');
+      currentChart.style.display="none";
+    }
+  }
+      //returns that string
+      return finalId;
+  });
+}
+
+
 
 //ALERT BANNER OBJECTS
 const alertBanner = document.getElementById('alert');
@@ -47,10 +108,10 @@ const send = document.getElementById("send");
 //GRAPH CODE
 
   //line charts
-  hourlyChart.style.display="none";
-  dailyChart.style.display="none";
-  monthlyChart.style.display="none";
-  weeklyChart.style.display="none";
+//  hourlyChart.style.display="none";
+//  dailyChart.style.display="none";
+//  monthlyChart.style.display="none";
+//  weeklyChart.style.display="none";
 
 
     //HourlyLine
