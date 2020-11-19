@@ -4,17 +4,9 @@ $.ajax({
   dataType: 'json',
   success: function(data) {
     const result = data.results[0];
-//    console.log(result.picture.thumbnail);
     const userPic = result.picture.thumbnail;
-    console.log(userPic);
-//    console.log(result.name.first);
     const userName = result.name.first;
-    console.log(userName);
-//    console.log(result.name.last);
     const userLast = result.name.last;
-    console.log(userLast);
-    console.log(userName + " " + userLast);
-//adding the picture to the src of avatar image
   $('#avatar-image').attr('src', userPic);
 //adding the name to the p tag
   const avatarName = document.getElementById("avatar-name");
@@ -34,7 +26,12 @@ const chart_Array = [hourlyChart.getAttribute('id'),
                     dailyChart.getAttribute('id'),
                     weeklyChart.getAttribute('id'),
                     monthlyChart.getAttribute('id')];
-
+//default settings
+hourlyChart.style.display="none";
+dailyChart.style.display="none";
+weeklyChart.style.display="block";
+monthlyChart.style.display="none";
+document.getElementsByClassName('traffic-nav-link')[2].classList.add('active');
 
 //creates variable which grabs onto array of list items
 const clickItems = document.getElementsByClassName('traffic-nav-link');
@@ -53,11 +50,8 @@ for(let i=0; i<clickItems.length; i++) {
     clickItem.classList.add("active");
     //then create a variable which gets the href attribute of the clicked list item
     let href = clickItem.getAttribute('href');
-//---> DO I NEED THIS?    //create a function that returns the ID name that the href of the clicked item
-//    function getId(){
     //then create an array of the letters in the href attribute
     let splitHref = href.split("");
-    console.log(splitHref);
     //a function to remove the # from the variable
     function newId(id) {
       //will return the array without the hashtag
@@ -65,32 +59,19 @@ for(let i=0; i<clickItems.length; i++) {
     }
     //creates a variable to filter through the array without the hashtag
       let newIdArray = splitHref.filter(newId);
-      console.log(newIdArray);
       //finally creates a variable that joins the array into a string
       let finalId = newIdArray.join('');
-    //  console.log(finalId);
-      //console.log(finalId);
-  //    function nameChart(currentChart){
-  //      for(let i=0; i<chart_Array.length; i++) {
-  //        let currentChart = chart_Array[i];
-  //        return currentChart;
-  //      }
-  //    }
-  //    var x = nameChart();
-  //    console.log(x);
-  console.log(finalId);
-  console.log(chart_Array);
+
   for(let i=0; i<chart_Array.length; i++) {
     let currentChart = chart_Array[i];
     if (currentChart == finalId){
-      console.log(currentChart);
-      currentChart.style.display="block";
-    } else {
-      console.log('false');
-      currentChart.style.display="none";
-    }
+      var correctChart = currentChart;
+     document.getElementById(correctChart).style.display="block";
+  } else {
+    var wrongChart = currentChart;
+    document.getElementById(wrongChart).style.display="none";
+   }
   }
-      //returns that string
       return finalId;
   });
 }
@@ -106,13 +87,6 @@ const message = document.getElementById("messageField");
 const send = document.getElementById("send");
 
 //GRAPH CODE
-
-  //line charts
-//  hourlyChart.style.display="none";
-//  dailyChart.style.display="none";
-//  monthlyChart.style.display="none";
-//  weeklyChart.style.display="none";
-
 
     //HourlyLine
     const HourlyLine = new Chart(hourlyChart, {
