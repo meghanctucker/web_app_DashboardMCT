@@ -223,6 +223,15 @@ const Mobile = new Chart(donutChart, {
         data: [431, 765, 1256]
       }
     ]
+  },
+  options: {
+    legend: {
+      display: true,
+      position: 'right',
+      labels: {
+
+      }
+    }
   }
 });
 
@@ -243,7 +252,42 @@ alertBanner.addEventListener('click', e=>{
   }
 });
 
+//NOTIFY DROPDOWN
+
+  const notify = document.getElementById('notify');
+  const notifyModal = document.getElementById('notification-modal');
+  const notifyMessage = document.getElementsByClassName('notification-message');
+  const greenDot = document.getElementById('notification');
+  let items = notifyMessage.length;
+  notifyModal.style.display = "none";
+  //when the notify bell IS clicked
+  notify.addEventListener('click', function(){
+    notifyModal.style.display = "block";
+    for(let i=0; i<notifyMessage.length; i++){
+      let clickedMessage = notifyMessage[i];
+      clickedMessage.addEventListener('click', function(){
+        clickedMessage.style.display = "none";
+        items -= 1;
+        if (items>0) {
+          console.log(items);
+        } else {
+          notifyModal.style.display = "none";
+          greenDot.style.display = "none";
+        }
+      })
+      notify.addEventListener('click', function(){
+        notifyModal.style.display = "none";
+        greenDot.style.display = "none";
+      })
+    }
+  });
+
+
 //MESSAGE FIELD CODE
+const searchBox = document.getElementById('userField');
+const users_array = [ 'Victoria Chambers', 'Dale Byrd', 'Dawn Wood', 'Dan Oliver'];
+let pick_Letter = [];
+
 send.addEventListener('click', () => {
   //ensure user and message fields are filled out
   if (user.value === "" && message.value === "") {
@@ -256,3 +300,204 @@ send.addEventListener('click', () => {
     alert("Messaage successfully sent to: ${user.value}");
   }
 });
+
+// message Search
+
+function autocomplete(inp, arr) {
+  //inp = the input of te text field, arr = the array of possible names
+  var currentFocus;
+  //execute function when user writes in text field
+  inp.addEventListener("input", function(e){
+    var a, b, i, val = this.value;
+    //close any already open lists of autocompleted values
+    closeAllLists();
+    if (!val) { return false;}
+    currentFocus = -1;
+    //create a DIV element that will contain the items (values):
+    a = document.createElement("DIV");
+    a.setAttribute("id", this.id + "autocomplete-list");
+    a.setAttribute("class", "autocomplete-items");
+    //append the DIV element as a child of the autocomplete countainer:
+    this.parentNode.appendChild(a);
+    //for each item in the array...
+    for(i=0; i<arr.length; i++){
+      //check if the item starts with the same letters as the text field values
+      if (arr[i].substr(0, val.length).toLowerCase() == val.toLowerCase()) {
+        //create a DIV element for each matching elements
+        b = document.createElement("DIV");
+        //make the matching letters bold
+        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+        b.innerHTML += arr[i].substr(val.length);
+        //insert an input field that will hold the current array item's value
+        b.innerHTML += "<input type='hidden' value='"+ arr[i] +"'>";
+        //execute a function when someone clicks on the item value (DIV elements):
+          b.addEventListener("click", function(e) {
+            //insert the value for the autocomplete text field:
+            inp.value = this.getElementsByTagName("input")[0].value;
+            //close the list of autocompleted values, or any other open lists
+            closeAllLists();
+          });
+          a.appendChild(b);
+      }
+    }
+  });
+  //execute a function presses a key on the keyboard
+  inp.addEventListener("keyup", function(e) {
+    var x = document.getElementById(this.id + "autocomplete-list");
+    if(x) x = x.getElementsByTagName("div");
+    if (e.keyCode == 40) {
+      //if the down arrow is pressed increase the currentFocus variable
+      currentFocus++;
+      //and make the current item more visible
+      addActive(x);
+    } else if (e.keyCode ==38) {
+      //up
+      currentFocus--;
+      //make more visible
+      addActive(x);
+    } else if (e.keyCode == 13) {
+      //if the enter key is pressed, prevent the form from being submited
+      e.preventDefault();
+      if (currentFocus > -1) {
+        //and simulate a click on the active item
+        if (x) x[currentFocus].click();
+      }
+    }
+  });
+  function addActive(x) {
+    // a function to classify the item as active
+    if (!x) return false;
+    //start by removing all the active items
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    //add class autocomplete-active:
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    //a function to remove the active class from all autocomplete items
+    for (var i =0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    //close all autocomplete lists in the document, except the one passed by the argument
+    var x = document.getElementsByClassName("autocomplete-items");
+      for (var i=0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+  }
+  //execute a function when someone clicks in the document:
+  document.addEventListener("click", function (e){
+    closeAllLists(e.target);
+  })
+}
+
+autocomplete(document.getElementById("userField"), users_array);
+
+//LOCAL STORAGE CODE
+
+    //varables
+    //ok so with these two we just need to make sure we can grab the checkbox and then check if it is true or not
+const emailNotifications = document.getElementsByClassName('switch-light')[0].getElementsByTagName('input')[0];
+const publicProfile = document.getElementsByClassName('switch-light')[1].getElementsByTagName('input')[0];
+  //note that this is weird because the toggled class is the opposite of what we want... checkbox = true
+//console.log(emailNotifications.checked = true);
+//if (emailNotifications)
+//console.log(publicProfile);
+emailNotifications.addEventListener('click', function(){
+  var myCheck = emailNotifications.checked;
+  console.log(myCheck);
+  localStorage.setItem('myCheck', JSON.stringify(myCheck));
+  //now parse the local storage back to json
+  //set the checked value based on the return
+
+})
+
+const timeZone = document.getElementById('timezone').getElementsByClassName('selected')[0];
+//console.log(timeZone);
+
+const saveIt = document.getElementById('save');
+const clearIt = document.getElementById('cancel');
+//console.log(saveIt);
+//console.log(clearIt);
+  //functions for local Storage
+
+  //functions to execute
+
+  // call functions
+/*
+  'use strict';
+function supportsLocalStorage() { //we can keep all of this - checks for local storage
+  try {
+    return 'localStorage' in window && window['localStorage'] !== null;
+  } catch(e) {
+    return false;
+  }
+}
+
+function getRecentSearches() { //we want to get recent settings
+  var searches = localStorage.getItem('recentSearches'); //maybe we get items from the three things
+  if(searches) {
+    return JSON.parse(searches); //I think we can keep this... it just parses them... but maybe we need 3 seperate ones
+  } else {
+    return [];
+  }
+}
+
+function saveSearchString(str) { // ok so this was our way to check if it was truthy
+  var searches = getRecentSearches();
+  if(!str || searches.indexOf(str) > -1) { //we aren't typing anything in exactly, so maybe we need different parameters
+    return false;
+  }
+  searches.push(str); //here it's pushing the string onto searches, the results of the function above
+  localStorage.setItem('recentSearches', JSON.stringify(searches)); //this sets it to local storage
+  return true;
+}
+
+function removeSearches() {
+  localStorage.removeItem('recentSearches'); //and this removes all the previous data.
+}
+
+// Create an li, given string contents, append to the supplied ul
+function appendListItem(listElement, string) { //add class list
+  var listItemElement = document.createElement('LI'); //document.classList add ('selected')
+  listItemElement.innerHTML = string; //maybe I don't need this?
+  listElement.appendChild(listItemElement); //uuuugggghhhh
+}
+
+// Empty the contents of an element (ul)
+function clearList(listElement) { //instead set everything back to original
+  listElement.innerHTML = ''; //gonna need to set emailNotifications publicProfile, and timeZone back to original
+}
+
+window.onload = function() {
+  if(supportsLocalStorage()) {
+    var searchForm = document.getElementById('searchForm'); //replace with emailNotifications no... save button
+    var searchBar = document.getElementById('searchBar'); //replace with publicProfile, timeZone
+    var recentSearchList = document.getElementById('recentSearchList');
+    var clearButton = document.getElementById('clearStorage'); //replace with cancel button
+
+    // Initialize display list
+    var recentSearches = getRecentSearches(); //references code from line 431
+    recentSearches.forEach(function(searchString) {
+      appendListItem(recentSearchList,searchString);
+    });
+
+    // Set event handlers
+    searchForm.addEventListener('submit', function(event) { //this is the save button constant
+      var searchString = searchBar.value; //get the value of the 3 things (2 toggles, one drop down)
+      if (saveSearchString(searchString)) {
+        appendListItem(recentSearchList, searchString); //instead of appending the list item, we are adding classes?
+      }
+    });
+
+    clearButton.addEventListener('click', function(event) { //this is the cancel button
+      removeSearches();
+      clearList(recentSearchList);
+    });
+  }
+};
+*/

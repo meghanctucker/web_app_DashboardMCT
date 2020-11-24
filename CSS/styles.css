@@ -1,3 +1,4 @@
+
 .grid-container {
   display: grid;
   grid-template-columns: 100%;
@@ -87,19 +88,27 @@ h3 {
   margin-right: -10px;
 }
 
-.notify {
+#notify {
   display: flex;
   flex-direction: row;
   padding-right: 1%;
 }
 
-.notification {
+#notification {
   background: #81C98F;
   border-radius: 50%;
   width: 10px;
   height: 10px;
   padding-left: 0px;
   margin-right: 5px;
+}
+
+#notification-modal {
+  background: #fff;
+  position: absolute;
+  left: 55%;
+  z-index: 10;
+  border: 1px solid black;
 }
 
 .avatar {
@@ -221,7 +230,8 @@ input {
 }
 
 .social-section{
-  border-top: 1px solid grey;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
 }
 
 .social-text {
@@ -305,7 +315,9 @@ input {
   font-size: .55em;
 }
 
- .notify:hover .notify-bell-icon {
+
+
+ #notify:hover .notify-bell-icon {
    -webkit-animation-name: ring;
    -webkit-animation-duration: .25s;
    -webkit-animation-iteration-count: 3;
@@ -395,6 +407,39 @@ button{
 }
 */
 
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+.autocomplete-items {
+  position:absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  width: 300px;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+}
+
+.autocomplete-active {
+  background-color: purple !important;
+  color: #ffffff;
+}
+
 @media (min-width: 768px) {
 
   .grid-container {
@@ -411,6 +456,20 @@ button{
 
   .dashboard {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .traffic {
+    border-bottom: 1px solid lightgrey;
+    padding-bottom:3%;
+  }
+
+  .daily {
+    border-right: 1px solid lightgrey;
+  }
+
+  .widget-container-half {
+    padding: 5%;
+    padding-bottom: 10%;
   }
 
   .main-header, .traffic, .social-section {

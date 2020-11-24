@@ -25,7 +25,7 @@
         <h1><strong id="strong-header">Your</strong>App™</h1>
         <wrapper class="userInfo">
         <!-- bell icon -->
-        <div class="notify">
+        <div id="notify">
           <div class="bell">
           <?xml version="1.0" encoding="utf-8"?>
           <!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -42,9 +42,10 @@
              </g>
            </svg>
          </div>
-           <div class="notification">
+           <div id="notification">
 
            </div>
+
          </div>
           <div class="avatar">
             <img  id="avatar-image" class="profile-image"/>
@@ -78,8 +79,20 @@
 <!-- DASHBOARD -->
       <div class="dashboard">
   <!-- FIRST ROW Dash is 1/3 search is 2/3 -->
+
+        <div id="notification-modal">
+          <ul >
+            <li class="notification-message">
+              <p> Victoria Chambers sent a friend request </p>
+            </li>
+            <li class="notification-message">
+              <p> You have 10 new messages in your inbox </p>
+            </li>
+          </ul>
+         </div>
         <div class="main-header">
           <h2> Dashboard </h2>
+
           <div class="search">
             <form>
               <input type="search" placeholder="Search...">
@@ -100,23 +113,23 @@
             <li href="#monthlyChart" class="traffic-nav-link">Monthly</li>
           </ul>
           <div class="widget-container-full">
-            <canvas id="hourlyChart" height="200" width="400"></canvas>
-            <canvas id="dailyChart" height="200" width="400"></canvas>
-            <canvas id="traffic" height="200" width="400"></canvas>
-            <canvas id="monthlyChart" height="200" width="400"></canvas>
+            <canvas id="hourlyChart" height="100" width="400"></canvas>
+            <canvas id="dailyChart" height="100" width="400"></canvas>
+            <canvas id="traffic" height="100" width="400"></canvas>
+            <canvas id="monthlyChart" height="100" width="400"></canvas>
           </div>
         </section>
     <!--Third Row each canvas takes up half -->
         <section class="daily">
           <h3>Daily Traffic</h3>
           <div class="widget-container-half">
-            <canvas id="dailyTraffic" height="200" width="200"></canvas>
+            <canvas id="dailyTraffic" height="100" width="150"></canvas>
           </div>
         </section>
         <section class="mobile-users">
           <h3>Mobile Users</h3>
           <div class="widget-container-half">
-            <canvas id="mobileUsers" height="200" width="200"></canvas>
+            <canvas id="mobileUsers" height="100" width="150"></canvas>
           </div>
         </section>
   <!-- FOURTH ROW Social stats has three in-line items -->
@@ -291,13 +304,16 @@
     <section class="message">
           <h3> MESSAGE USER </h3>
 
-            <form class="widget-container">
-              <input type="text" placeholder"Search for user" class="form-field" id="userField">
+            <form class="widget-container" autocomplete="off" action="/action_page.php">
+              <div class="autocomplete" syle="width:300px;">
+                <input type="text" placeholder="Search for user" class="form-field" id="userField">
+              </div>
               <textarea placeholder="Message for user" class="form-area" id="messageField"></textarea>
               <button class="button-primary" id="send"> SEND </button>
             </form>
       </section>
-
+    <!--  <script> autocomplete(document.getElementById("userField"), users_array); </script>
+-->
 
     <section class="settings">
         <h3> SETTINGS </h3>
@@ -332,8 +348,8 @@
         </label>
 
         <select class="form-field" id="timezone">
-          <option disabled selected> Select a Timezone</option>
-          <option>Eastern</option>
+          <option disabled selected > Select a Timezone</option>
+          <option class='selected'>Eastern</option>
           <option>Central</option>
           <option>Mountain</option>
           <option>Pacific</option>
