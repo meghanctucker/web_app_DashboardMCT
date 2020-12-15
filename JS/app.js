@@ -397,30 +397,30 @@ function autocomplete(inp, arr) {
 
 autocomplete(document.getElementById("userField"), users_array);
 
-//LOCAL STORAGE CODE
+//LOCAL STORAGE CODE *********************************************************
 
     //varables
     //ok so with these two we just need to make sure we can grab the checkbox and then check if it is true or not
-const emailNotifications = document.getElementsByClassName('switch-light')[0].getElementsByTagName('input')[0];
-const publicProfile = document.getElementsByClassName('switch-light')[1].getElementsByTagName('input')[0];
-  //note that this is weird because the toggled class is the opposite of what we want... checkbox = true
-//console.log(emailNotifications.checked = true);
-//if (emailNotifications)
-//console.log(publicProfile);
-emailNotifications.addEventListener('click', function(){
-  var myCheck = emailNotifications.checked;
-  console.log(myCheck);
-  localStorage.setItem('myCheck', JSON.stringify(myCheck));
+//const emailNotifications = document.getElementsByClassName('switch-light')[0].getElementsByTagName('input')[0];
+//const publicProfile = document.getElementsByClassName('switch-light')[1].getElementsByTagName('input')[0];
+    //note that this is weird because the toggled class is the opposite of what we want... checkbox = true
+    //console.log(emailNotifications.checked = true);
+    //if (emailNotifications)
+    //console.log(publicProfile);
+//emailNotifications.addEventListener('click', function(){
+//  var myCheck = emailNotifications.checked;
+//  console.log(myCheck);
+//  localStorage.setItem('myCheck', JSON.stringify(myCheck));
   //now parse the local storage back to json
   //set the checked value based on the return
 
-})
+//})
 
-const timeZone = document.getElementById('timezone').getElementsByClassName('selected')[0];
+//const timeZone = document.getElementById('timezone').getElementsByClassName('selected')[0];
 //console.log(timeZone);
 
-const saveIt = document.getElementById('save');
-const clearIt = document.getElementById('cancel');
+//const saveIt = document.getElementById('save');
+//onst clearIt = document.getElementById('cancel');
 //console.log(saveIt);
 //console.log(clearIt);
   //functions for local Storage
@@ -428,7 +428,7 @@ const clearIt = document.getElementById('cancel');
   //functions to execute
 
   // call functions
-/*
+/* **********************************THIS IS THE START
   'use strict';
 function supportsLocalStorage() { //we can keep all of this - checks for local storage
   try {
@@ -438,66 +438,188 @@ function supportsLocalStorage() { //we can keep all of this - checks for local s
   }
 }
 
-function getRecentSearches() { //we want to get recent settings
-  var searches = localStorage.getItem('recentSearches'); //maybe we get items from the three things
-  if(searches) {
-    return JSON.parse(searches); //I think we can keep this... it just parses them... but maybe we need 3 seperate ones
+function getRecentSettings() { //function getRecentSearches() { //we want to get recent settings
+  var settings = localStorage.getItem('recentSettings'); //var searches = localStorage.getItem('recentSearches'); //maybe we get items from the three things
+    if(settings) { //if(searches) {
+    var mySet = JSON.parse(settings); //return JSON.parse(searches); //I think we can keep this... it just parses them... but maybe we need 3 seperate ones
+      if (mySet == "true") {
+        return true;
+      } else {
+        return false;
+      }
   } else {
     return [];
   }
 }
 
-function saveSearchString(str) { // ok so this was our way to check if it was truthy
-  var searches = getRecentSearches();
-  if(!str || searches.indexOf(str) > -1) { //we aren't typing anything in exactly, so maybe we need different parameters
+function saveSettingString(str){ //function saveSearchString(str) { // ok so this was our way to check if it was truthy
+  var settings = getRecentSettings(); //var searches = getRecentSearches();
+    if(!str || settings.indexOf(str) > -1) { //if(!str || searches.indexOf(str) > -1) { //we aren't typing anything in exactly, so maybe we need different parameters
     return false;
   }
-  searches.push(str); //here it's pushing the string onto searches, the results of the function above
-  localStorage.setItem('recentSearches', JSON.stringify(searches)); //this sets it to local storage
+    settings.push(str); //  searches.push(str); //here it's pushing the string onto searches, the results of the function above
+   localStorage.setItem('recentSettings', JSON.stringify(settings)); //localStorage.setItem('recentSearches', JSON.stringify(searches)); //this sets it to local storage
   return true;
 }
 
-function removeSearches() {
-  localStorage.removeItem('recentSearches'); //and this removes all the previous data.
+ function removeSettings() {//function removeSearches() {
+  localStorage.removeItem('recentSettings'); //localStorage.removeItem('recentSearches'); //and this removes all the previous data.
 }
 
-// Create an li, given string contents, append to the supplied ul
+//we need to determine if the checkbox is checked // Create an li, given string contents, append to the supplied ul
 function appendListItem(listElement, string) { //add class list
   var listItemElement = document.createElement('LI'); //document.classList add ('selected')
   listItemElement.innerHTML = string; //maybe I don't need this?
   listElement.appendChild(listItemElement); //uuuugggghhhh
 }
+//^^^^I don't think we need this
 
 // Empty the contents of an element (ul)
 function clearList(listElement) { //instead set everything back to original
   listElement.innerHTML = ''; //gonna need to set emailNotifications publicProfile, and timeZone back to original
-}
+} //^^^^This can go away
 
 window.onload = function() {
   if(supportsLocalStorage()) {
-    var searchForm = document.getElementById('searchForm'); //replace with emailNotifications no... save button
-    var searchBar = document.getElementById('searchBar'); //replace with publicProfile, timeZone
-    var recentSearchList = document.getElementById('recentSearchList');
-    var clearButton = document.getElementById('clearStorage'); //replace with cancel button
+    //var searchForm = document.getElementById('searchForm'); //replace with emailNotifications no... save button
+    var saveButton = document.getElementById('save');
+    //var searchBar = document.getElementById('searchBar'); //replace with publicProfile, timeZone
+    //var recentSearchList = document.getElementById('recentSearchList');
+    //var clearButton = document.getElementById('clearStorage'); //replace with cancel button
+    var cancelButton = document.getElementById('cancel');
 
     // Initialize display list
-    var recentSearches = getRecentSearches(); //references code from line 431
-    recentSearches.forEach(function(searchString) {
-      appendListItem(recentSearchList,searchString);
-    });
+   console.log(getRecentSettings());
+  //  var checkedValue = getRecentSearches(); //references code from line 431
+  //  emailNotifications.checked = recentSearches;
+//    recentSearches.forEach(function(searchString) {
+//      appendListItem(recentSearchList,searchString);
+//    });
+//^^^^^ this gets the thing
 
     // Set event handlers
-    searchForm.addEventListener('submit', function(event) { //this is the save button constant
-      var searchString = searchBar.value; //get the value of the 3 things (2 toggles, one drop down)
-      if (saveSearchString(searchString)) {
-        appendListItem(recentSearchList, searchString); //instead of appending the list item, we are adding classes?
+  //  searchForm.addEventListener('submit', function(event) { //this is the save button constant
+      saveButton.addEventListener('click', function(event) {
+//^^^ this sets the thing
+      //var searchString = searchBar.value; //get the value of the 3 things (2 toggles, one drop down)
+      var eInput = emailNotifications.checked;
+    //  var firstSet = localStorage.setIem('setting1', JSON.stringfy(eInput));
+// The above line ^^^ I think we actually want to make a function and use the eInput as a parameter
+      //if (saveSearchString(searchString)) {
+      //  appendListItem(recentSearchList, searchString); //instead of appending the list item, we are adding classes?
       }
     });
 
-    clearButton.addEventListener('click', function(event) { //this is the cancel button
-      removeSearches();
-      clearList(recentSearchList);
+    cancelButton.addEventListener('click', function(event) {//clearButton.addEventListener('click', function(event) { //this is the cancel button
+///^^^^^^ this removes the thing
+      removeSettings();//removeSearches();
+      //clearList(recentSearchList);
     });
   }
 };
-*/
+
+/*
+
+const emailNotifications = document.getElementsByClassName('switch-light')[0].getElementsByTagName('input')[0];
+const saveIt = document.getElementById('save');
+const clearIt = document.getElementById('cancel');
+
+emailNotifications.addEventListener('click', function(){
+  var myCheck = emailNotifications.checked;
+  saveIt.addEventListener('click', function(){
+  var setting1 = localStorage.setItem('setting1', JSON.stringify(myCheck));
+  })
+  clearIt.addEventListener('click', function(){
+  var setting1 = localStorage.removeItem('setting1', JSON.stringify(myCheck));
+  })
+//this is all crap.
+  window.onload = function() {
+    var myItem = localStorage.getItem(setting1);
+    console.log(myItem);
+    if (myItem == "true") {
+      emailNotifications.checked = true;
+    } else if (myItem == "false") {
+      emailNotifications.checked = false;
+    } else {
+      emailNotifications.checked = false;
+    }
+  }
+})
+
+**/
+
+const emailNotifications = document.getElementsByClassName('switch-light')[0].getElementsByTagName('input')[0];
+const publicProfile = document.getElementsByClassName('switch-light')[1].getElementsByTagName('input')[0];
+const timeZone = document.getElementById('timezone').getElementsByTagName('option');//.getElementsByClassName('selected')[0];
+const saveIt = document.getElementById('save');
+const clearIt = document.getElementById('cancel');
+
+//get emailNotifications
+var set1 = emailNotifications.checked;
+var result1 = localStorage.getItem('set1', JSON.stringify(set1));
+if (result1 == "true") {
+  emailNotifications.checked = true;
+} else if (result1 == "false") {
+  emailNotifications.checked == false;
+} else {
+  emailNotifications.checked == false;
+}
+//getpublicprofile
+var set2 = publicProfile.checked;
+var result2 = localStorage.getItem('set2', JSON.stringify(set2));
+if (result2 == "true") {
+  publicProfile.checked = true;
+} else if (result1 == "false") {
+  publicProfile.checked == false;
+} else {
+  publicProfile.checked == false;
+}
+
+//iterates through the options to find the selected timezone
+//for (let i = 0; i < timeZone.length; i++) {
+//  var myTime = timeZone[i];
+//  var selectedOne = myTime.getAttribute('selected');
+//  if (selectedOne != null){
+//    console.log(myTime);
+//  }
+
+var set3 = localStorage.getItem('set3', JSON.stringify(set3));
+if(set3 != undefined){
+timeZone[set3].selected = true;
+} else {
+  timeZone[0].selected = true;
+}
+
+
+
+//get selected timezone
+//var userZone = timeZone
+
+
+//set
+saveIt.addEventListener('click', function(){
+  var set1 = emailNotifications.checked;
+  localStorage.setItem('set1', JSON.stringify(set1));
+  var set2 = publicProfile.checked;
+  localStorage.setItem('set2', JSON.stringify(set2));
+//save selected timezone
+for(let i = 0; i <timeZone.length; i++) {
+  var myTime = timeZone[i].selected;
+  if (myTime == true) {
+    var set3 = i;
+  //  console.log(set3);
+      localStorage.setItem('set3', JSON.stringify(set3));
+  }
+}
+})
+
+//clear
+clearIt.addEventListener('click', function(){
+  var set1 = emailNotifications.checked;
+  localStorage.removeItem('set1', JSON.stringify(set1));
+  console.log("cleared!");
+  var set2 = publicProfile.checked;
+  localStorage.removeItem('set2', JSON.stringify(set2));
+  //clear selected timezone
+  localStorage.removeItem('set3', JSON.stringify(set3));
+})
