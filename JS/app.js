@@ -575,26 +575,12 @@ if (result2 == "true") {
   publicProfile.checked == false;
 }
 
-//iterates through the options to find the selected timezone
-//for (let i = 0; i < timeZone.length; i++) {
-//  var myTime = timeZone[i];
-//  var selectedOne = myTime.getAttribute('selected');
-//  if (selectedOne != null){
-//    console.log(myTime);
-//  }
-
 var set3 = localStorage.getItem('set3', JSON.stringify(set3));
 if(set3 != undefined){
 timeZone[set3].selected = true;
 } else {
   timeZone[0].selected = true;
 }
-
-
-
-//get selected timezone
-//var userZone = timeZone
-
 
 //set
 saveIt.addEventListener('click', function(){
