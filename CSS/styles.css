@@ -32,7 +32,7 @@ h3 {
   text-transform: uppercase;
 }
 
-button{
+button {
   border: none;
 }
 
@@ -47,14 +47,14 @@ button{
 
 .button-disabled{
   border-radius: 5%;
-/*  padding: 2%;
-  margin: 2%; */
   padding: 2% 0%;
   margin: 2% 15%;
   width: 300px;
+  background-color: #a6a6a6;
+  color: #fff;
 }
 
-.widget-container{
+.widget-container {
   display: flex;
   flex-direction: column;
   width: 95%;
@@ -63,6 +63,17 @@ button{
 input {
   border-style: none;
   border-color: none;
+}
+
+.members-text {
+  line-height: normal;
+  font-family: lato, sans-serif;
+  font-size: .75em;
+  font-weight:  400;
+}
+
+::placeholder {
+  color: #cccccc;
 }
 /******************
 HEADER
@@ -100,7 +111,6 @@ HEADER
   padding-top: 1.5%;
   padding-bottom: 1.5%;
 }
-
 
 .bell {
   width: 30px;
@@ -188,7 +198,7 @@ transform-origin: 50%;
   font-size: .75em;
   min-width: 60%;
   margin-left: -5%;
-  font-color: #FBFBFB;
+  color: #FBFBFB;
 }
 
 .profile-image {
@@ -237,8 +247,8 @@ DASHBOARD
 .main-header {
   display: flex;
   flex-direction: row;
-/*  justify-content: space-between;
-*/}
+}
+
 .main-header h2 {
   width: 25%;
   padding-right: 2.5%;
@@ -275,7 +285,6 @@ DASHBOARD
   border-right: 1px solid lightgrey;
 }
 
-
 .alert {
   background-color: #7477BF;
   color: #fff;
@@ -292,9 +301,6 @@ DASHBOARD
   flex-direction: row;
   justify-content: space-between;
 }
-
-
-
 
 /***************
 GRAPHS
@@ -454,10 +460,17 @@ MESSAGE
 }
 
 #messageField {
-  width: 300px;
   height: 150px;
   margin: 0% 15%;
 }
+
+#userField, #messageField {
+    border: 1px solid lightgrey;
+    width: 300px;
+    border-radius: 5%;
+    background-color: #fbfbfb;
+  }
+
 /***************
 SETTINGS
 ***************/
@@ -545,8 +558,8 @@ SETTINGS
     align-items: flex-start;
   }
 
-  .search{
-    padding-left: 45%;
+  .search {
+    padding-left: 50%;
   }
 
   .traffic {
@@ -589,7 +602,6 @@ SETTINGS
   .members-container {
     display: flex;
     flex-direction: row;
-  /*  justify-content: space-around;*/
     width: 90%;
     margin-left: 2.5%;
     padding-left: 2.5%;
@@ -613,10 +625,6 @@ SETTINGS
   }
 
   .members-text {
-    line-height: normal;
-    font-family: lato, sans-serif;
-    font-size: .75em;
-    font-weight:  400;
     margin-left: 2%;
   }
 
@@ -636,6 +644,7 @@ SETTINGS
   margin-left: -5%;
   margin-top: 0;
 }
+
  #messageField, .button-primary {
     margin-left: 0%;
   }
@@ -649,20 +658,13 @@ SETTINGS
     border-left: 1px solid lightgrey;
   }
 
-  #userField, #messageField {
-    border: 1px solid lightgrey;
-    width: 300px;
-    border-radius: 5%;
-
-  }
-
   #messageField {
     height: 100px;
   }
+
   .message, .settings, {
     border-top: 1px solid lightgrey;
   }
-
 
   .widget-container {
     margin: 2.5%;
@@ -670,7 +672,7 @@ SETTINGS
   }
 
   .form-area {
-    overflow: scroll;
+    overflow: none;
     height: 110px;
     width: 93.5%;
     margin-left: 2.2%;
@@ -684,8 +686,7 @@ SETTINGS
 
   .settings-button{
     display: flex;
-  /*  justify-content: space-between;
-    */width: 300px;
+    width: 300px;
     margin-left: 5%;
   }
 
@@ -697,4 +698,15 @@ SETTINGS
     margin-left: 3%;
   }
 
+}
+
+@media (min-width: 1024px) {
+
+  .search {
+    padding-left: 56%;
+  }
+
+  .social-section {
+    padding-left: 5%;
+  }
 }
