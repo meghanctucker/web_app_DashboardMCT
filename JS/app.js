@@ -243,12 +243,12 @@ alertBanner.innerHTML =
     <p><strong>ALERT:</strong> You have <strong>6</strong> overdue tasks to complete</p>
     <p class="alert-banner-close">x</p>
   </div>
-  `
+  `;
 
 alertBanner.addEventListener('click', e=>{
   const element = e.target;
   if (element.classList.contains("alert-banner-close")) {
-    alertBanner.style.display = "none"
+    alertBanner.style.display = "none";
   }
 });
 
@@ -274,11 +274,11 @@ alertBanner.addEventListener('click', e=>{
           notifyModal.style.display = "none";
           greenDot.style.display = "none";
         }
-      })
+      });
       notify.addEventListener('click', function(){
         notifyModal.style.display = "none";
         greenDot.style.display = "none";
-      })
+      });
     }
   });
 
@@ -297,7 +297,7 @@ send.addEventListener('click', () => {
   } else if (message.value === "" ) {
     alert("Please fill out message field before sending");
   } else {
-    alert("Messaage successfully sent to: ${user.value}");
+    alert("Message successfully sent to: " + user.value + ".");
   }
 });
 
@@ -392,15 +392,15 @@ function autocomplete(inp, arr) {
   //execute a function when someone clicks in the document:
   document.addEventListener("click", function (e){
     closeAllLists(e.target);
-  })
+  });
 }
 
 autocomplete(document.getElementById("userField"), users_array);
 
 //LOCAL STORAGE CODE *********************************************************
 
-const emailNotifications = document.getElementsByClassName('switch-light')[0].getElementsByTagName('input')[0];
-const publicProfile = document.getElementsByClassName('switch-light')[1].getElementsByTagName('input')[0];
+let emailNotifications = document.getElementsByClassName('switch-light')[0].getElementsByTagName('input')[0];
+let publicProfile = document.getElementsByClassName('switch-light')[1].getElementsByTagName('input')[0];
 const timeZone = document.getElementById('timezone').getElementsByTagName('option');//.getElementsByClassName('selected')[0];
 const saveIt = document.getElementById('save');
 const clearIt = document.getElementById('cancel');
@@ -411,9 +411,9 @@ var result1 = localStorage.getItem('set1', JSON.stringify(set1));
 if (result1 == "true") {
   emailNotifications.checked = true;
 } else if (result1 == "false") {
-  emailNotifications.checked == false;
+  emailNotifications.checked = false;
 } else {
-  emailNotifications.checked == false;
+  emailNotifications.checked = false;
 }
 //getpublicprofile
 var set2 = publicProfile.checked;
@@ -421,9 +421,9 @@ var result2 = localStorage.getItem('set2', JSON.stringify(set2));
 if (result2 == "true") {
   publicProfile.checked = true;
 } else if (result1 == "false") {
-  publicProfile.checked == false;
+  publicProfile.checked = false;
 } else {
-  publicProfile.checked == false;
+  publicProfile.checked = false;
 }
 
 var set3 = localStorage.getItem('set3', JSON.stringify(set3));
@@ -448,15 +448,16 @@ for(let i = 0; i <timeZone.length; i++) {
       localStorage.setItem('set3', JSON.stringify(set3));
   }
 }
-})
+});
 
 //clear
 clearIt.addEventListener('click', function(){
-  var set1 = emailNotifications.checked;
+//  var set1 = emailNotifications.checked;
   localStorage.removeItem('set1', JSON.stringify(set1));
-  console.log("cleared!");
-  var set2 = publicProfile.checked;
+  emailNotifications.checked = set1;
+//  var set2 = publicProfile.checked;
   localStorage.removeItem('set2', JSON.stringify(set2));
+  publicProfile.checked = set2;
   //clear selected timezone
   localStorage.removeItem('set3', JSON.stringify(set3));
-})
+});

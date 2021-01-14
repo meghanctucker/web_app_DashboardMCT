@@ -62,7 +62,6 @@ button {
 
 input {
   border-style: none;
-  border-color: none;
 }
 
 .members-text {
@@ -662,7 +661,7 @@ SETTINGS
     height: 100px;
   }
 
-  .message, .settings, {
+  .message, .settings {
     border-top: 1px solid lightgrey;
   }
 
@@ -672,7 +671,7 @@ SETTINGS
   }
 
   .form-area {
-    overflow: none;
+    overflow: hidden;
     height: 110px;
     width: 93.5%;
     margin-left: 2.2%;
